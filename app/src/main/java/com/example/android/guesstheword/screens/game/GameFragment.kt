@@ -53,6 +53,9 @@ class GameFragment : Fragment() {
         //Timber.i("viewModelProvider called")
         gameViewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 
+        //passing viewModel to layout data
+        binding.gameViewModel = gameViewModel
+
         gameViewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
             binding.scoreText.text = newScore.toString()
         })
@@ -73,10 +76,7 @@ class GameFragment : Fragment() {
 
         })
 
-        binding.correctButton.setOnClickListener { gameViewModel.onCorrect()
-        }
-        binding.skipButton.setOnClickListener { gameViewModel.onSkip()
-        }
+
         return binding.root
 
     }
