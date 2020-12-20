@@ -28,6 +28,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.android.guesstheword.R
 import com.example.android.guesstheword.databinding.ScoreFragmentBinding
+import timber.log.Timber
 
 /**
  * Fragment where the final score is shown, after the game is over
@@ -59,10 +60,10 @@ class ScoreFragment : Fragment() {
 
         //passing viewModel to layout data
         binding.scoreViewModel = viewModel
+        //setting fragment as lifecycleOwner for LiveData dataBinding in layout
+        binding.lifecycleOwner = this
 
-        viewModel.score.observe(viewLifecycleOwner, Observer { finalScore ->
-            binding.scoreText.text = finalScore.toString()
-        })
+        Timber.i("lifecycle owner: ${binding.lifecycleOwner}")
 
         viewModel.eventNewGame.observe(viewLifecycleOwner, Observer { eventNewGame ->
             if (eventNewGame){

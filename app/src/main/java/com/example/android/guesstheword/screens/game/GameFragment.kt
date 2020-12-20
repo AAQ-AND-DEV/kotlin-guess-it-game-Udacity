@@ -63,11 +63,12 @@ class GameFragment : Fragment() {
             }
         })
 
-        gameViewModel.currentTime.observe(viewLifecycleOwner, Observer {
-            currTime ->
-            binding.timerText.text = DateUtils.formatElapsedTime(currTime)
+//        gameViewModel.currentTime.observe(viewLifecycleOwner, Observer {
+//            currTime ->
+//            binding.timerText.text = DateUtils.formatElapsedTime(currTime)
+//
+//        })
 
-        })
 
 
         return binding.root

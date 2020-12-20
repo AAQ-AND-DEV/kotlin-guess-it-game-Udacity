@@ -18,7 +18,7 @@ class ScoreViewModel(finalScore: Int): ViewModel() {
     init{
         _score.value = finalScore
         _eventNewGame.value = false
-        Timber.i("final score is $finalScore")
+        Timber.i("final score is ${_score.value}")
     }
 
     fun newGamePressed(){
